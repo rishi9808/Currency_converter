@@ -9,11 +9,12 @@ const InputBox = ({
   currencies = [],
   amountDisabled = false,
   currencyDisabled = false,
+  className,
 }) => {
   return (  
-    <div>
-      <div>
-        <label>{label}</label>
+    <div className={`flex ${className} p-4 m-3 border rounded-3xl shadow-sm`}>
+      <div className='flex flex-col'>
+        <label className=' text-gray-500'>{label}</label>
         <input
           type="number"
           value={amount}
@@ -21,16 +22,18 @@ const InputBox = ({
             onChangeAmount && onChangeAmount(Number(e.target.value))
           }
           disabled={amountDisabled}
+          className='border border-gray-300 rounded-md p-1'
         />
       </div>
-      <div>
-        <label>Currency</label>
+      <div className='flex flex-col ml-2'>
+        <label className='text-gray-500' >Currency</label>
         <select
           value={selectedCurrency}
           onChange={(e) =>
             onChangeCurrency && onChangeCurrency(e.target.value)
           }
           disabled={currencyDisabled}
+          className='border border-gray-300 rounded-md p-1' 
         >
           {currencies.map((currency) => (
             <option key={currency} value={currency}>
